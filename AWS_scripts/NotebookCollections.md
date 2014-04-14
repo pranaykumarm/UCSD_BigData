@@ -1,11 +1,11 @@
 ## Notebooks created For Big Data Course ##
-####  __[PCA]__  UCSD_BigData/notebooks/sklearn_Yoav/  ####
+####  __[PCA]__  notebooks/sklearn_Yoav/  ####
 A basic notebook about PCA analysis  **[HW for 4/15]**
-####  __[eigenfaces]__  UCSD_BigData/notebooks/eigenfaces/  ####
+####  __[eigenfaces]__  notebooks/eigenfaces/  ####
 A notebook demonstrating the use of PCA for analyzing images of faces.   **[HW for 4/15]**
-####  __[weather]__  UCSD_BigData/notebooks/weather/  ####
+####  __[weather]__  notebooks/weather/  ####
 A notebook demonstrating the use of PCA to the analysis of weather patterns.  **[HW for 4/15]**
-####  __[regression]__  UCSD_BigData/notebooks/regression/ ####
+####  __[regression]__  notebooks/regression/ ####
 
 ----
 ## Introduction to ipython Notebooks ##
