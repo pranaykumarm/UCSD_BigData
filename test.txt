@@ -1,0 +1,31 @@
+Bradly Feeley
+San Diego Ruby on Rails Developer
+Follow me on TwitterFork me on Github
+Update a Github Fork from the Original Repo
+Feather Blog has made some great progress recently and when looking to update my fork I found myself staring at my repo not sure what to do. My wonderful Github didn't give me a one-click way to pull updates from the original repository (or any other fork for that matter). I'll demonstrate how to do this with my fork of Feather. I'll assume you already have a locally copy of a repo with everything committed and up-to-date.
+
+First you need to add a remote branch to your repository that points to the original repo you forked from.
+
+git remote add --track master mleung git://github.com/mleung/feather.git
+
+You will want to replace 'master' with the branch you want to track in the remote repo. In most cases this will be master, although you could replace it with edge or any other branch. You should also replace 'mleung' is what you the remote will be called.
+
+To verify the remote repository was added run
+
+git remote
+
+You should see the new remote repo, in this case named 'mleung', along with any other remote repositories you may have previously added.
+
+Now we can fetch all the changes from mleung's code base.
+
+git fetch mleung
+
+This will create a new remote branch called 'mleung/master'. Now we are ready to merge the code from the remote repository.
+
+git merge mleung/master
+
+That's it. Remember, this process isn't limited only to the original repository. Feel free to add remote branches for other user's forks or even from repositories outside Github.
+
+
+Copyright © 2013 Bradly Feeley
+ 
