@@ -1,17 +1,11 @@
 ## Notebooks created For Big Data Course ##
-<<<<<<< HEAD
-=======
-####  __[docs]__ notebooks/docs/  ####
-Markdown documents 
-####  __[PCA]__  notebooks/sklearn_Yoav/  ####
-A basic notebook about PCA analysis  **[HW for 4/15]**
-####  __[eigenfaces]__  notebooks/eigenfaces/  ####
-A notebook demonstrating the use of PCA for analyzing images of faces.   **[HW for 4/15]**
-####  __[weather]__  notebooks/weather/  ####
-A notebook demonstrating the use of PCA to the analysis of weather patterns.  **[HW for 4/15]**
 
-=======
-=======
+#### __[mrjob]__ UCSD_BigData/notebooks/mrjob// ####
+Notebooks using mrjob to run map-reduce jobs
+
+####  __[sorting]__  UCSD_BigData/notebooks/sorting/ ####
+A notebook about sorting and it's application in map-reduce and in random sampling
+
 ####  __[P-values]__  UCSD_BigData/notebooks/P-values/ ####
 A variant of the weather notebook that includes a correction to a mistake and the computation of different p-values for the correlation between variables.
 
@@ -35,7 +29,6 @@ A notebook demonstrating the use of PCA for analyzing images of faces.   **[HW f
 ####  __[weather]__  UCSD_BigData/notebooks/weather/  ####
 A notebook demonstrating the use of PCA to the analysis of weather patterns.  **[HW for 4/15]**
 
->>>>>>> b1d3daaa01bdc4ff5be1343be1fbec4329ea1647
 ####  __[regression]__  UCSD_BigData/notebooks/regression/ ####
 Notebooks about linear regression
 

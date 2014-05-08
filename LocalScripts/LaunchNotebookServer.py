@@ -8,8 +8,7 @@
  You can use either "sudo pip install boto" or "sudo easy_install boto"
 
 ### Security credentials ###
- In order to launch a notebook you need to first establish credentials on AWS. Set these credentials
-by editing the values in the file ../../Vault/AWSCredentials.py
+ In order to launch a notebook you need to first establish credentials on AWS. Set these credentials by editing the values in the file ../../Vault/AWSCredentials.py
 
 Here are the steps you need to follow to achieve this
 
@@ -38,9 +37,8 @@ Here are the steps you need to follow to achieve this
 """
 
 from AWSCredentials import *
-
-ami='ami-27958e4e'             # Image configured for big data class
-# AMI name: IncreasingDiskSpace. These two lines last updated 4/21/2014
+ami='ami-a0db3dc8'             # Image configured for big data class
+# AMI name: mrjob. These two lines last updated 5/1/2014
 
 # ### Definitions of procedures ###
 import boto.ec2
@@ -86,17 +84,23 @@ def report_all_instances():
 
     return (instances,instance_alive)
 
+def emptyCallBack(line): return False
+
 def kill_all_notebooks():
     command=['scripts/CloseAllNotebooks.py']
-    def emptyCallBack(line): return False
     Send_Command(command,emptyCallBack)
 
+def set_credentials():
+    """ set ID and secret key as environment variables on the remote machine"""
+    
+
 def copy_credentials(LocalDir):
-    def emptyCallBack(line): return False
+    from glob import glob
     print 'Entered copy_credentials:',LocalDir
     mkdir=['mkdir','Vault']
     Send_Command(mkdir,emptyCallBack,dont_wait=True)
-    scp=['scp','-i',keyPairFile,('%s/AWSCredentials.py' % args['Copy_Credentials']),('%s@%s:Vault/' % (login_id,instance.public_dns_name))]
+    list=glob(args['Copy_Credentials'])
+    scp=['scp','-i',keyPairFile]+list+[('%s@%s:Vault/' % (login_id,instance.public_dns_name))]
     print ' '.join(scp)
     subprocess.call(scp)
 
@@ -104,8 +108,13 @@ def set_password(password):
     if len(password)<6:
         sys.exit('Password must be at least 6 characters long')
     command=["scripts/SetNotebookPassword.py",password]
-    def emptyCallBack(line): return False
     Send_Command(command,emptyCallBack)
+
+def create_image(image_name):
+    #delete the Vault directory, where all of the secret keys and passwords reside.
+    delete_Vault=['rm','-r','~/Vault']
+    Send_Command(delete_Vault,emptyCallBack)
+    instance.create_image(args['create_image'])
 
 def Send_Command(command,callback,dont_wait=False):
     init=time.time()
@@ -243,7 +252,7 @@ if __name__ == "__main__":
 
     if(args['create_image'] != None):
         print "creating a new AMI called",args['create_image']
-        instance.create_image(args['create_image'])
+        create_image(args['create_image'])
 
     if(args['Copy_Credentials']!= None):
        copy_credentials(args['Copy_Credentials'])
